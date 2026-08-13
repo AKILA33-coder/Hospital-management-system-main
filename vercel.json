@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "env": {
+    "REACT_APP_API_URL": "@hms_backend_url"
+  },
+  "envs": {
+    "hms_backend_url": {
+      "value": "https://your-backend.onrender.com"
+    }
+  }
+}

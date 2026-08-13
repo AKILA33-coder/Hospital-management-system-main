@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: hospital-management-api
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    env:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: DB_HOST
+        scope: runtime
+        value: replace-with-render-postgres-host
+      - key: DB_USER
+        value: admin
+        scope: runtime
+      - key: DB_PASSWORD
+        scope: runtime
+      - key: DB_NAME
+        value: hms_db
+      - key: JWT_SECRET
+        scope: runtime
+      - key: FRONTEND_URL
+        value: https://your-frontend.vercel.app
+    routes:
+      - type: http
+        path: /
+        middleware:
+          - type: cors
+            allowedOrigins:
+              - https://your-frontend.vercel.app
